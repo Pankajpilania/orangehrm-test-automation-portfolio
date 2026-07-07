@@ -1,0 +1,16 @@
+{
+  "name": "orangehrm-cypress-js",
+  "version": "1.0.0",
+  "description": "Cypress + JS framework for OrangeHRM",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress run",
+    "test:ui": "cypress open",
+    "report": "mochawesome-merge cypress/reports/html/.jsons/*.json > cypress/reports/html/mochawesome.json && marge cypress/reports/html/mochawesome.json -f report -o cypress/reports/html"
+  },
+  "dependencies": {
+    "cypress": "^13.6.0",
+    "cypress-mochawesome-reporter": "^3.8.0",
+    "dotenv": "^16.3.1"
+  }
+}

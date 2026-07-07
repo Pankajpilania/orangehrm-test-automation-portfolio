@@ -1,0 +1,25 @@
+# Build output
+target/
+*.class
+*.jar
+
+# IDE
+.idea/
+*.iml
+.eclipse/
+.settings/
+.classpath
+.project
+
+# Maven
+.mvn/
+!.mvn/wrapper/maven-wrapper.jar
+
+# Logs & reports (generated at runtime)
+*.log
+target/test-output/
+target/allure-results/
+
+# OS
+.DS_Store
+Thumbs.db

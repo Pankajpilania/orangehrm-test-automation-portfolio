@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Cypress runtime artifacts
+cypress/videos/
+cypress/screenshots/
+cypress/reports/
+
+# Environment
+.env
+
+# OS
+.DS_Store
+Thumbs.db

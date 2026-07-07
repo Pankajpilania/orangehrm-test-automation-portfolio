@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="OrangeHRM Suite" parallel="tests" thread-count="2">
+    <listeners>
+        <listener class-name="com.orangehrm.utils.ExtentManager" />
+    </listeners>
+
+    <test name="PIM Tests">
+        <groups>
+            <run>
+                <include name="pim" />
+                <include name="smoke" />
+                <include name="regression" />
+            </run>
+        </groups>
+        <classes>
+            <class name="com.orangehrm.tests.pim.PimTest" />
+        </classes>
+    </test>
+
+    <test name="Admin Tests">
+        <groups>
+            <run>
+                <include name="admin" />
+            </run>
+        </groups>
+        <classes>
+            <class name="com.orangehrm.tests.admin.AdminTest" />
+        </classes>
+    </test>
+
+    <test name="Leave Tests">
+        <groups>
+            <run>
+                <include name="leave" />
+            </run>
+        </groups>
+        <classes>
+            <class name="com.orangehrm.tests.leave.LeaveTest" />
+        </classes>
+    </test>
+
+    <test name="BDD Tests">
+        <classes>
+            <class name="com.orangehrm.bdd.runners.CucumberTestRunner" />
+        </classes>
+    </test>
+
+    <test name="API Tests">
+        <classes>
+            <class name="com.orangehrm.api.LoginApiTest" />
+            <class name="com.orangehrm.api.EmployeeApiTest" />
+        </classes>
+    </test>
+</suite>
