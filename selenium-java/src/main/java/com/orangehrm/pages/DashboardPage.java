@@ -19,6 +19,12 @@ public class DashboardPage extends BasePage {
     @FindBy(xpath = "//span[text()='Leave']")
     private WebElement leaveMenuLink;
 
+    @FindBy(css = ".oxd-userdropdown-name")
+    private WebElement userDropdown;
+
+    @FindBy(xpath = "//a[text()='Logout']")
+    private WebElement logoutLink;
+
     public DashboardPage(WebDriver driver) {
         super(driver);
     }
@@ -38,5 +44,10 @@ public class DashboardPage extends BasePage {
 
     public void clickLeaveMenu() {
         click(leaveMenuLink);
+    }
+
+    public void logout() {
+        click(userDropdown);
+        click(logoutLink);
     }
 }

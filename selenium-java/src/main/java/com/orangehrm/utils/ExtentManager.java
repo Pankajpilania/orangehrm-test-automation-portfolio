@@ -27,6 +27,11 @@ public class ExtentManager implements ITestListener {
         test.set(extentTest);
     }
 
+    /** Returns the ExtentTest for the current thread — used by test classes to log steps inline. */
+    public static ExtentTest getTest() {
+        return test.get();
+    }
+
     @Override
     public void onTestSuccess(ITestResult result) {
         test.get().log(Status.PASS, "Test Passed");
