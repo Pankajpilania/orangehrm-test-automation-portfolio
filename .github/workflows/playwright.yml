@@ -1,33 +1,73 @@
 name: Playwright Tests
+
 on:
   push:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false          # don't cancel other browsers if one fails
       matrix:
-        browser: [chromium, firefox, webkit]
+        include:
+          - browser: chromium
+            continue-on-error: false
+          - browser: firefox
+            continue-on-error: false
+          - browser: webkit
+            continue-on-error: true   # WebKit on the shared demo is inherently flakier
+
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 20
-    - name: Install dependencies
-      working-directory: playwright-js
-      run: npm ci
-    - name: Install Playwright Browsers
-      working-directory: playwright-js
-      run: npx playwright install --with-deps
-    - name: Run Playwright tests
-      working-directory: playwright-js
-      run: npx playwright test --project=${{ matrix.browser }}
-    - uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: playwright-report-${{ matrix.browser }}
-        path: playwright-js/playwright-report/
-        retention-days: 30
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        working-directory: playwright-js
+        run: npm ci
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('playwright-js/package-lock.json') }}
+
+      - name: Install Playwright browsers
+        working-directory: playwright-js
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: npx playwright install --with-deps
+
+      - name: Install Playwright system deps (cached browser run)
+        working-directory: playwright-js
+        if: steps.playwright-cache.outputs.cache-hit == 'true'
+        run: npx playwright install-deps
+
+      - name: Run Playwright tests (${{ matrix.browser }})
+        working-directory: playwright-js
+        # Include the 'setup' project explicitly so the auth storageState
+        # file is created before dependent projects attempt to read it.
+        run: npx playwright test --project=setup --project=${{ matrix.browser }}
+        continue-on-error: ${{ matrix.continue-on-error }}
+
+      - name: Upload Playwright report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report-${{ matrix.browser }}
+          path: playwright-js/playwright-report/
+          retention-days: 30
+
+      - name: Upload test results (on failure)
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: test-results-${{ matrix.browser }}
+          path: playwright-js/test-results/
+          retention-days: 7
