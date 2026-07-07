@@ -2,9 +2,9 @@
 
 > A production-quality, multi-framework QA automation portfolio targeting the [OrangeHRM Demo](https://opensource-demo.orangehrmlive.com) — designed to showcase enterprise Java patterns alongside modern JavaScript-based tooling in a single, structured mono-repo.
 
-[![Selenium CI](https://img.shields.io/github/actions/workflow/status/YOUR_GITHUB_USERNAME/orangehrm-test-automation-portfolio/selenium.yml?label=Selenium&logo=java)](https://github.com/YOUR_GITHUB_USERNAME/orangehrm-test-automation-portfolio/actions)
-[![Playwright CI](https://img.shields.io/github/actions/workflow/status/YOUR_GITHUB_USERNAME/orangehrm-test-automation-portfolio/playwright.yml?label=Playwright&logo=playwright)](https://github.com/YOUR_GITHUB_USERNAME/orangehrm-test-automation-portfolio/actions)
-[![Cypress CI](https://img.shields.io/github/actions/workflow/status/YOUR_GITHUB_USERNAME/orangehrm-test-automation-portfolio/cypress.yml?label=Cypress&logo=cypress)](https://github.com/YOUR_GITHUB_USERNAME/orangehrm-test-automation-portfolio/actions)
+[![Selenium CI](https://img.shields.io/github/actions/workflow/status/Pankajpilania/orangehrm-test-automation-portfolio/selenium.yml?label=Selenium&logo=java)](https://github.com/Pankajpilania/orangehrm-test-automation-portfolio/actions)
+[![Playwright CI](https://img.shields.io/github/actions/workflow/status/Pankajpilania/orangehrm-test-automation-portfolio/playwright.yml?label=Playwright&logo=playwright)](https://github.com/Pankajpilania/orangehrm-test-automation-portfolio/actions)
+[![Cypress CI](https://img.shields.io/github/actions/workflow/status/Pankajpilania/orangehrm-test-automation-portfolio/cypress.yml?label=Cypress&logo=cypress)](https://github.com/Pankajpilania/orangehrm-test-automation-portfolio/actions)
 
 ---
 
@@ -57,7 +57,7 @@ orangehrm-test-automation-portfolio/
 
 ### Clone & Setup
 ```bash
-git clone https://github.com/YOUR_GITHUB_USERNAME/orangehrm-test-automation-portfolio.git
+git clone https://github.com/Pankajpilania/orangehrm-test-automation-portfolio.git
 cd orangehrm-test-automation-portfolio
 ```
 
