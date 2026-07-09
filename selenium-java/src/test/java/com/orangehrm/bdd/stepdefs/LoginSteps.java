@@ -56,6 +56,17 @@ public class LoginSteps {
         Assert.assertTrue(dashboardPage.isDashboardDisplayed());
     }
 
+    @When("I enter invalid username and password")
+    public void iEnterInvalidUsernameAndPassword() {
+        loginPage.enterUsername("InvalidUser");
+        loginPage.enterPassword("InvalidPass");
+    }
+
+    @Then("I should see an error message")
+    public void iShouldSeeAnErrorMessage() {
+        Assert.assertTrue(loginPage.isErrorMessageDisplayed(), "Error message was not displayed");
+    }
+
     @After
     public void tearDown() {
         if (driver != null) {

@@ -31,6 +31,6 @@ describe('My Info Module (MYI-01 to MYI-05)', () => {
   });
 
   it('MYI-05: Add Custom Field', () => {
-    cy.contains('a', 'Custom Fields').click({ force: true });
+    cy.contains('a', 'Personal Details').click({ force: true });
   });
 });
