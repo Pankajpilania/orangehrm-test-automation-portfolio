@@ -4,6 +4,7 @@
   "description": "Cypress + JS framework for OrangeHRM",
   "main": "index.js",
   "scripts": {
+    "build": "echo 'No build needed'",
     "test": "cypress run",
     "test:ui": "cypress open",
     "report": "mochawesome-merge cypress/reports/html/.jsons/*.json > cypress/reports/html/mochawesome.json && marge cypress/reports/html/mochawesome.json -f report -o cypress/reports/html"

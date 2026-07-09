@@ -17,6 +17,7 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           working-directory: cypress-js
+          build: ""
           # No build/start needed — tests run directly against the live OrangeHRM demo URL
 
       - name: Upload Mochawesome report
